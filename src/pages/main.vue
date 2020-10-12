@@ -22,6 +22,8 @@
   #main-page
     .atlant-logo
       width: 100px
+      &:not(.mini)
+        margin-top: 60px
       &.mini
         width: 25px
         position: absolute
