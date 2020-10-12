@@ -13,6 +13,7 @@
   import WindowState from '../vendor/window-state'
 
   const GRID = 10 // please change this value to edit global grid window movement
+  const roundToGrid = x => Math.ceil(x / GRID) * GRID
   function getPosition (event) {
     return event.touches && event.touches.length > 0
       ? event.touches[0]
@@ -203,16 +204,16 @@
         return (this.bounds.width = v)
       },
       setX (v) {
-        if (v < 0) return
-        if ((v + this.bounds.width) > window.innerWidth) return
-        if (v % GRID) return
+        // if (v < 0) return
+        // if ((v + this.bounds.width) > window.innerWidth) return
+        if (v % GRID) v = roundToGrid(v)
 
         this.bounds.x = v
       },
       setY (v) {
         if (v < 0) return
-        if ((v + this.bounds.height) > window.innerHeight) return
-        if (v % GRID) return
+        // if ((v + this.bounds.height) > window.innerHeight) return
+        if (v % GRID) v = roundToGrid(v)
 
         this.bounds.y = v
       },
